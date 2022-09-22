@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 
 
-function Country(props) {
+function Country() {
   // ** states
   const [numberOne, setNumberOne] = useState(3);
   const [numberTwo, setNumberTwo] = useState(4);
@@ -22,7 +22,7 @@ function Country(props) {
       <div className="form">
         <Link style={{ textDecoration: "none" }} to="/select-country">
           {" "}
-          Selected Countries : {store?.country}{" "}
+          Selected Country : {store?.country}{" "}
         </Link>
       </div>
       <div>
