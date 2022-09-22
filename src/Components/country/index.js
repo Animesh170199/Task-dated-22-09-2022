@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Render from '../render';
 
 function  Country(props) {
-  const array = ['India' , 'newYork', 'srilanka' , 'westIndies']
+  const array = ["India", "newYork", "srilanka", "west Indies"];
 const [number,setNumber]=useState({
   num_1:'3',
   num_2:'4'
