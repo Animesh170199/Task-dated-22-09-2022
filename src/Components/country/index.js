@@ -1,39 +1,32 @@
 import React, { useState } from "react";
-import Render from "../render";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function Country(props) {
-  const [number, setNumber] = useState({
-    num_1: "3",
-    num_2: "4",
-  });
-  const [flag, setFlag] = useState(false);
+  // ** states
+  const [numberOne, setNumberOne] = useState(3);
+  const [numberTwo, setNumberTwo] = useState(4);
 
-  function handleSubmit() {
-    setFlag(true);
-  }
+  // ** hooks
+  const store = useSelector((state) => state.country);
+
   function reverse() {
-    setNumber((prev) => ({
-      ...prev,
-      num_1: prev.num_1 !== "3" ? "3" : "4",
-      num_2: prev.num_2 === "4" ? "3" : "4",
-    }));
+    setNumberOne(numberTwo);
+    setNumberTwo(numberOne);
   }
   return (
-    <>
-      {flag ? (
-        <Render setFlag={setFlag} flag={flag}  />
-      ) : (
-        <React.Fragment>
-          <div className="form">
-            <button onClick={handleSubmit}> Select Countries </button>
-          </div>
-          <div>
-            <button onClick={() => reverse()}>{number.num_1}</button>
-            <button onClick={reverse}>{number.num_2}</button>
-          </div>
-        </React.Fragment>
-      )}
-    </>
+    <React.Fragment>
+      <div className="form">
+        <Link style={{ textDecoration: "none" }} to="/select-country">
+          {" "}
+          Selected Countries : {store?.country}{" "}
+        </Link>
+      </div>
+      <div>
+        <button onClick={() => reverse()}>{numberOne}</button>
+        <button onClick={reverse}>{numberTwo}</button>
+      </div>
+    </React.Fragment>
   );
 }
 
